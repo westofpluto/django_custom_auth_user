@@ -9,6 +9,9 @@ from django.contrib.admin.options import ModelAdmin
 # Models
 from django_custom_user.user.model import User
 
+# Admins
+from django_custom_user.admin import UserAdmin
+
 
 class MockRequest:
     pass

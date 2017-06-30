@@ -9,6 +9,9 @@ from django.contrib.admin.options import ModelAdmin
 # Models
 from django_custom_user.auth_token.model import AuthToken
 
+# Admins
+from django_custom_user.admin import AuthTokenAdmin
+
 
 class MockRequest:
     pass
