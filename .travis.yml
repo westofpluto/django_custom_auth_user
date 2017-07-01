@@ -1,21 +1,17 @@
 language: python
 
-
 python:
     - "2.7"
     - "3.4"
     - "3.5"
 
-
 sudo: false
-
 
 env: 
     - DJANGO=1.9
     - DJANGO=1.10
     - DJANGO=1.11
     - DJANGO=master
-
 
 matrix:
     fast_finish: true
@@ -34,18 +30,14 @@ matrix:
     allow_failures:
       - env: DJANGO=master
 
-
 install:
     - pip install -r requirement-test.txt
-
 
 script:
     - tox
 
-
 after_success:
-    - codecov -e TOXENV,DJANGO
-
+    - codecov
 
 notifications:
     email: false
