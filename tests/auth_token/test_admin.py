@@ -11,7 +11,7 @@ from django.contrib.admin.options import ModelAdmin
 from django_custom_user.auth_token.model import AuthToken
 
 # Admins
-from django_custom_user.admin import AuthTokenAdmin
+from django_custom_user.auth_token.admin import AuthTokenAdmin
 
 
 class MockRequest:
