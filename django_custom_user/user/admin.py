@@ -7,4 +7,7 @@ from django_custom_user.user.model import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
+    """
+    User admin
+    """
     pass

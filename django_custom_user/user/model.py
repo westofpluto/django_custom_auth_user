@@ -7,6 +7,9 @@ from django_custom_user.user.manager import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """
+    User model
+    """
 
     email = models.EmailField(max_length=255, unique=True)
     username = models.CharField(max_length=255, unique=True)
@@ -17,6 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_disabled = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
 
+    # User manager
     objects = UserManager()
 
     USERNAME_FIELD = 'email'

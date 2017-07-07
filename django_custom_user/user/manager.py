@@ -8,6 +8,9 @@ from django.contrib.auth.base_user import BaseUserManager
 
 
 class UserQueryset(models.query.QuerySet):
+    """
+    User query set
+    """
 
     def get_all(self):
         return self.all()
@@ -37,6 +40,9 @@ class UserQueryset(models.query.QuerySet):
 
 
 class UserManager(BaseUserManager):
+    """
+    User manager
+    """
 
     def _create_user(self, email, password, is_staff,
                      is_superuser, **extra_fields):
