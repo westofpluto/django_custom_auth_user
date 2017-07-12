@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 # Custom User
-from django_custom_user.user.registration import RegisterService
+from django_custom_user.user.registration import RegistrationService
 
 # Exception
 from django_custom_user.user.exceptions import InvalidInput
@@ -19,7 +19,7 @@ class RegisterView(View):
         return super(RegisterView, self).dispatch(request, *args, **kwargs)
 
     def post(self, request):
-        register_service = RegisterService(
+        registration_service = RegistrationService(
             email=request.POST.get('email', ''),
             username=request.POST.get('username', ''),
             first_name=request.POST.get('first_name', ''),
@@ -27,11 +27,11 @@ class RegisterView(View):
             password=request.POST.get('password', ''))
 
         try:
-            user = register_service.run()
+            user = registration_service.run()
         except InvalidInput:
             return HttpResponse(
                 json.dumps({
-                    'error': register_service.get_registration_form_errors()}),
+                    'error': registration_service.get_registration_form_errors()}),
                 content_type='application/json')
 
         serialized_user = serializers.serialize('json', [user])

@@ -12,7 +12,7 @@ from django_custom_user.user.forms.registration_form import RegistrationForm
 from django_custom_user.user.commands.register_command import register
 
 
-class RegisterService():
+class RegistrationService():
     """
     Registration domain service
     """
