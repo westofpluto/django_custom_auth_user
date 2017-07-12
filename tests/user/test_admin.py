@@ -11,7 +11,7 @@ from django.contrib.admin.options import ModelAdmin
 from django_custom_user.user.model import User
 
 # Admins
-from django_custom_user.user.admin import UserAdmin
+from django_custom_user.admin import *
 
 
 class MockRequest:
