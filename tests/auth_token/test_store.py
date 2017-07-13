@@ -8,7 +8,7 @@ from django_custom_user.models import User
 from django_custom_user.models import AuthToken
 
 # Store
-from django_custom_user.auth.store import AuthTokenStore
+from django_custom_user.auth_token.store import AuthTokenStore
 
 
 @pytest.mark.django_db

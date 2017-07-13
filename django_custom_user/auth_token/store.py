@@ -4,6 +4,9 @@ from django_custom_user.models import AuthToken
 
 
 class AuthTokenStore():
+    """
+    Auth token store
+    """
 
     model = AuthToken
 

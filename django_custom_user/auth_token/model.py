@@ -2,7 +2,7 @@
 from django.utils import timezone
 from django.db import models
 from django_custom_user.models import User
-from django_custom_user.auth.manager import AuthTokenManager
+from django_custom_user.auth_token.manager import AuthTokenManager
 
 
 class AuthToken(models.Model):

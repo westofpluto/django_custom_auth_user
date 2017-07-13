@@ -8,7 +8,7 @@ from django_custom_user.models import AuthToken
 
 # Admin
 from django_custom_user.user.admin import UserAdmin
-from django_custom_user.auth.admin import AuthTokenAdmin
+from django_custom_user.auth_token.admin import AuthTokenAdmin
 
 
 # Register admins
