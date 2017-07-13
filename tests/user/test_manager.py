@@ -4,7 +4,7 @@ import pytest
 from mixer.backend.django import mixer
 
 # Model
-from django_custom_user.user.model import User
+from django_custom_user.models import User
 
 
 @pytest.mark.django_db

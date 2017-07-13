@@ -8,7 +8,7 @@ from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.options import ModelAdmin
 
 # Models
-from django_custom_user.user.model import User
+from django_custom_user.models import User
 
 # Admins
 from django_custom_user.admin import *
