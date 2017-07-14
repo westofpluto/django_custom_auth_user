@@ -15,7 +15,7 @@ from django_custom_user.auth_token.commands.create_auth_token_command \
 
 class AuthenticateUserService():
     """
-    Token request service
+    Authenticate user service
     """
 
     auth_token_store = AuthTokenStore()
