@@ -1,3 +1,5 @@
+# -*- coding: utf-8
+# flake8: noqa
 import json
 from django.core import serializers
 from django.http import HttpResponse

@@ -1,3 +1,6 @@
+# -*- coding: utf-8
+# pylint: disable
+# flake8: noqa
 """
 Django settings for example project.
 
