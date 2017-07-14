@@ -20,10 +20,10 @@ class AuthTokenQueryset(models.query.QuerySet):
         return self.get(token=token)
 
     def filter_by_active(self):
-        return self.filter(expiration_date__lt=timezone.now())
+        return self.filter(expiration_date__gte=timezone.now())
 
     def filter_by_expired(self):
-        return self.filter(expiration_date__gte=timezone.now())
+        return self.filter(expiration_date__lt=timezone.now())
 
 
 class AuthTokenManager(models.Manager):

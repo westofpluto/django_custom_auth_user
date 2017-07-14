@@ -69,20 +69,20 @@ class TestAuthTokenManager():
     def test_filter_by_active(self):
         active_auth_tokens = AuthToken.objects.filter_by_active()
 
-        assert active_auth_tokens.count() == 2, \
+        assert active_auth_tokens.count() == 4, \
             'Should get all active auth tokens'
 
         for active_auth_token in active_auth_tokens:
-            assert active_auth_token.expiration_date < timezone.now(), \
+            assert active_auth_token.expiration_date > timezone.now(), \
                 'Should get all active auth tokens'
 
     @pytest.mark.usefixtures('auth_token_mock_data')
     def test_filter_by_expired(self):
         expired_auth_tokens = AuthToken.objects.filter_by_expired()
 
-        assert expired_auth_tokens.count() == 4, \
+        assert expired_auth_tokens.count() == 2, \
             'Should get all expired auth tokens'
 
         for expired_auth_token in expired_auth_tokens:
-            assert expired_auth_token.expiration_date > timezone.now(), \
+            assert expired_auth_token.expiration_date < timezone.now(), \
                 'Should get all expired auth tokens'

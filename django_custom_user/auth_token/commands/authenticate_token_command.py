@@ -6,7 +6,7 @@ from django_custom_user.models import AuthToken
 def authenticate_token(auth_token_store, auth_token):
     try:
         user = auth_token_store.query_set.select_related(
-            'user').find_by_token(auth_token).user
+            'user').filter_by_active().find_by_token(auth_token).user
 
         if user.is_disabled is True:
             return None
