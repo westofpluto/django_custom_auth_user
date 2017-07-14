@@ -4,8 +4,12 @@ from django_custom_user.models import User
 
 
 class UserStore():
+    """
+    User store
+    """
 
     model = User
+    query_set = User.objects
 
     def save(self, user):
         user.save()
@@ -27,9 +31,3 @@ class UserStore():
             user.save()
 
         return user
-
-    def find_by_email(self, email):
-        return self.model.objects.find_by_email(email)
-
-    def find_by_username(self, username):
-        return self.model.objects.find_by_username(username)

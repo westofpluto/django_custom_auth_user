@@ -5,21 +5,13 @@ from datetime import datetime
 class AuthenticationFailed(Exception):
     """
     Login/Authentication failed
+    or
+    User unauthenticated
+    Authentication not provided
     """
 
     def __init__(self, message='Authentication Failed'):
         super(AuthenticationFailed, self).__init__(message)
-        self.when = datetime.now()
-
-
-class Unauthorized(Exception):
-    """
-    User unauthorized
-    Authentication not provided
-    """
-
-    def __init__(self, message='Unauthorized'):
-        super(Unauthorized, self).__init__(message)
         self.when = datetime.now()
 
 

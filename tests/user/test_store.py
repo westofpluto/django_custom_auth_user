@@ -1,7 +1,6 @@
 # -*- coding: utf-8
 # Core
 import pytest
-from mixer.backend.django import mixer
 
 # Models
 from django_custom_user.models import User
@@ -42,39 +41,3 @@ class TestUserStore():
             user = None
 
         assert user, 'Should save user data in database'
-
-    def test_find_by_email(self, user_store):
-        mixer.blend(User, email='test_email@cloud.com')
-
-        try:
-            user_should_exist = user_store.find_by_email(
-                email='test_email@cloud.com')
-        except User.DoesNotExist:
-            user_should_exist = None
-
-        try:
-            user_should_not_exist = user_store.find_by_email(
-                email='email@cloud.com')
-        except User.DoesNotExist:
-            user_should_not_exist = None
-
-        assert user_should_exist is not None, 'Should get user by email'
-        assert user_should_not_exist is None, 'Should not get user by email'
-
-    def test_find_by_username(self, user_store):
-        mixer.blend(User, username='test_username')
-
-        try:
-            user_should_exist = user_store.find_by_username(
-                username='test_username')
-        except User.DoesNotExist:
-            user_should_exist = None
-
-        try:
-            user_should_not_exist = user_store.find_by_username(
-                username='username')
-        except User.DoesNotExist:
-            user_should_not_exist = None
-
-        assert user_should_exist is not None, 'Should get user by username'
-        assert user_should_not_exist is None, 'Should not get user by username'

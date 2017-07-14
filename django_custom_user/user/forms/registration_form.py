@@ -52,7 +52,7 @@ class RegistrationForm(forms.Form):
         email = self.cleaned_data['email']
 
         try:
-            self.user_store.find_by_email(email=email)
+            self.user_store.query_set.find_by_email(email=email)
             raise forms.ValidationError('Email address is already being used')
         except User.DoesNotExist:
             pass
@@ -63,7 +63,7 @@ class RegistrationForm(forms.Form):
         username = self.cleaned_data['username']
 
         try:
-            self.user_store.find_by_username(username=username)
+            self.user_store.query_set.find_by_username(username=username)
             raise forms.ValidationError('Username is already being used')
         except User.DoesNotExist:
             pass

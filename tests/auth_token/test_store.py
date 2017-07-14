@@ -28,4 +28,17 @@ class TestAuthTokenStore():
         except AuthToken.DoesNotExist:
             auth_token = None
 
-        assert auth_token, 'Should save auth token data in database'
+        assert auth_token, 'Should save auth token data'
+
+    def test_create(self, auth_token_store):
+        user = mixer.blend(User)
+        auth_token = auth_token_store.create(user=user)
+
+        assert isinstance(auth_token, AuthToken), 'Should create auth token'
+
+    def test_token_generator(self, auth_token_store):
+        mixer.blend(AuthToken, token='test_token')
+        token = auth_token_store.generate_token(token='test_token')
+
+        assert len(token) is 32, \
+            'Should create 32 lengthened token without duplicate'
