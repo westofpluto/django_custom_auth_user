@@ -16,15 +16,16 @@ from django_custom_user.models import AuthToken
 from django_custom_user.auth_token.decorators import token_required
 
 
+@token_required
+def view(request):
+    return request.user
+
+
 @pytest.mark.django_db
-class TestDecorators():
+class TestTokenRequiredDecorator():
 
-    def test_token_required(self):
+    def test_success(self):
         mixer.blend(AuthToken, token='test_token')
-
-        @token_required
-        def view(request):
-            return request.user
 
         request = HttpRequest()
         request.META['HTTP_AUTHORIZATION'] = 'token test_token'
@@ -37,12 +38,7 @@ class TestDecorators():
         assert isinstance(response, User), \
             'Should successfully authenticate token'
 
-    def test_failed_token_required(self):
-
-        @token_required
-        def view(request):
-            return request.user
-
+    def test_failed(self):
         request = HttpRequest()
         request.META['HTTP_AUTHORIZATION'] = 'token test_token'
 
@@ -53,12 +49,18 @@ class TestDecorators():
 
         assert response is None, 'Should fail in authenticating token'
 
-    def test_ajax_failed_token_required(self):
+        # Test wrong token format
+        request.META['HTTP_AUTHORIZATION'] = 'test_token'
 
-        @token_required
-        def view(request):
-            return request.user
+        try:
+            response = view(request)
+        except Http404:
+            response = None
 
+        assert response is None, \
+            'Should fail in authenticating token. Wrong format'
+
+    def test_ajax_failed(self):
         request = HttpRequest()
         request.META['HTTP_AUTHORIZATION'] = 'token test_token'
         request.META['CONTENT_TYPE'] = 'application/json'

@@ -44,8 +44,6 @@ def token_required(view_func):
                 return JsonResponse(error_context, 401)
 
             raise Http404
-        except Exception:
-            raise Http404
 
         if user:
             request.user = user
