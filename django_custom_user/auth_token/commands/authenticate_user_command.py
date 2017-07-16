@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 # Models
-from django_custom_user.models import User
+from django.contrib.auth import get_user_model
 
 
 def authenticate_user(user_store, email_or_username, password):
@@ -9,14 +9,14 @@ def authenticate_user(user_store, email_or_username, password):
     # Try finding user by username first
     try:
         user = user_query.find_by_username(email_or_username)
-    except User.DoesNotExist:
+    except get_user_model().DoesNotExist:
         user = None
 
     # If username does not exist try finding by email
     if user is None:
         try:
             user = user_query.find_by_email(email_or_username)
-        except User.DoesNotExist:
+        except get_user_model().DoesNotExist:
             user = None
 
     # If no user return 'None'

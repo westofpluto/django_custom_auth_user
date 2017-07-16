@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 # Models
-from django_custom_user.models import User
+from django.contrib.auth import get_user_model
 
 
 class UserStore():
@@ -8,8 +8,8 @@ class UserStore():
     User store
     """
 
-    model = User
-    query_set = User.objects
+    model = get_user_model()
+    query_set = get_user_model().objects
 
     def save(self, user):
         user.save()

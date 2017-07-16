@@ -4,7 +4,7 @@
 from django import forms
 
 # Models
-from django_custom_user.models import User
+from django.contrib.auth import get_user_model
 
 
 class RegistrationForm(forms.Form):
@@ -54,7 +54,7 @@ class RegistrationForm(forms.Form):
         try:
             self.user_store.query_set.find_by_email(email=email)
             raise forms.ValidationError('Email address is already being used')
-        except User.DoesNotExist:
+        except get_user_model().DoesNotExist:
             pass
 
         return email
@@ -65,7 +65,7 @@ class RegistrationForm(forms.Form):
         try:
             self.user_store.query_set.find_by_username(username=username)
             raise forms.ValidationError('Username is already being used')
-        except User.DoesNotExist:
+        except get_user_model().DoesNotExist:
             pass
 
         return username

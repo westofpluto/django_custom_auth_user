@@ -125,4 +125,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Set user default to custom
-AUTH_USER_MODEL = 'django_custom_user.User'
+AUTH_USER_MODEL = 'registration.User'

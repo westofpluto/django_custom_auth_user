@@ -1,7 +1,7 @@
 # -*- coding: utf-8
 from django.utils import timezone
 from django.db import models
-from django_custom_user.models import User
+from django.conf import settings
 from django_custom_user.auth_token.manager import AuthTokenManager
 
 
@@ -14,7 +14,7 @@ class AuthToken(models.Model):
     expiration_date = models.DateTimeField(
         default=timezone.now() + timezone.timedelta(days=1))
     user = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='auth_tokens')
     created_at = models.DateTimeField(auto_now_add=True)
