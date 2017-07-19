@@ -36,3 +36,6 @@ class AuthTokenStore():
             return self.generate_token()
         except AuthToken.DoesNotExist:
             return token
+
+    def delete(self, token):
+        token.delete()
