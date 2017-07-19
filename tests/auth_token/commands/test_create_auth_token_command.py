@@ -1,3 +1,4 @@
+# -*- coding: utf-8
 # Core
 import pytest
 from mixer.backend.django import mixer

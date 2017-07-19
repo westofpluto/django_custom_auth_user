@@ -42,3 +42,15 @@ class TestAuthTokenStore():
 
         assert len(token) is 32, \
             'Should create 32 lengthened token without duplicate'
+
+    def test_delete(self, auth_token_store):
+        token = mixer.blend(AuthToken, token='test_token')
+
+        auth_token_store.delete(token)
+
+        try:
+            token = auth_token_store.query_set.find_by_token('test_token')
+        except AuthToken.DoesNotExist:
+            token = None
+
+        assert token is None, 'Should delete token'
