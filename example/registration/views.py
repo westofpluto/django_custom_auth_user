@@ -1,6 +1,5 @@
 # -*- coding: utf-8
 # flake8: noqa
-from django.core import serializers
 from django.http import JsonResponse
 from django.views.generic import View
 from django.utils.decorators import method_decorator
@@ -11,6 +10,9 @@ from django_custom_user.user.registration import RegistrationService
 
 # Exception
 from django_custom_user.user.exceptions import InvalidInput
+
+# Serializer
+from .serializer import UserSerializer
 
 
 class RegisterView(View):
@@ -30,11 +32,11 @@ class RegisterView(View):
         try:
             user = registration_service.run()
         except InvalidInput:
-            errors = registration_service.get_registration_form_errors()
+            errors = {
+                'error': registration_service.get_registration_form_errors()
+            }
             return JsonResponse(errors, safe=False, status=422)
 
-        serialized_user = serializers.serialize(
-            'json', [user], ensure_ascii=False)
+        serialized_user = UserSerializer(user).data
 
-        return JsonResponse(
-            {'user': serialized_user}, status=200)
+        return JsonResponse({'user': serialized_user}, status=200)

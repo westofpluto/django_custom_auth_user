@@ -28,7 +28,7 @@ def token_required(view_func):
         authenticate_user_service = AuthenticateTokenService(
             auth_token=get_token(
                 http_authorization=request.META.get(
-                    'HTTP_AUTHORIZATION')))
+                    'HTTP_AUTHORIZATION', '')))
 
         try:
             user = authenticate_user_service.run()
@@ -41,7 +41,7 @@ def token_required(view_func):
             }
 
             if request.is_ajax():
-                return JsonResponse(error_context, 401)
+                return JsonResponse(error_context, status=401)
 
             raise Http404
 

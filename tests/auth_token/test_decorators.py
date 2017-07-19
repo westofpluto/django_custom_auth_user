@@ -71,4 +71,5 @@ class TestTokenRequiredDecorator():
         except Exception:
             response = None
 
-        assert response is None, 'Should fail in authenticating token by ajax'
+        assert response.status_code == 401, \
+            'Should fail in authenticating token by ajax'

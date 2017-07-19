@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'serpy',
     'django_custom_user',
     'registration',
+    'authentication',
 ]
 
 MIDDLEWARE = [
