@@ -15,15 +15,15 @@ version = get_version()
 readme = open('README.rst').read()
 
 setup(
-    name='django_custom_user',
+    name='django-custom-auth-user',
     version=version,
     description="""Django custom user""",
     long_description=readme,
     author='Anthon Alindada',
     author_email='anthon.alindada.435@gmail.com',
-    url='https://github.com/anthon-alindada/django_custom_user',
+    url='https://github.com/anthon-alindada/django_custom_auth_user',
     packages=[
-        'django_custom_user',
+        'custom_auth_user',
     ],
     include_package_data=True,
     install_requires=[
@@ -31,7 +31,7 @@ setup(
     ],
     license="MIT",
     zip_safe=False,
-    keywords='django_custom_user',
+    keywords='django custom auth user',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',

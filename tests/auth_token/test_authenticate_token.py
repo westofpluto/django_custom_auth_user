@@ -4,13 +4,13 @@ import pytest
 from mixer.backend.django import mixer
 
 # Model
-from django_custom_user.models import AuthToken
+from custom_auth_user.models import AuthToken
 
 # Exception
-from django_custom_user.auth_token.exceptions import AuthenticationFailed
+from custom_auth_user.auth_token.exceptions import AuthenticationFailed
 
 # Auth token service
-from django_custom_user.auth_token.authenticate_token \
+from custom_auth_user.auth_token.authenticate_token \
     import AuthenticateTokenService
 
 

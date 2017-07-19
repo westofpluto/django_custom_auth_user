@@ -5,10 +5,10 @@ from django.http import Http404
 from django.http import JsonResponse
 
 # Exception
-from django_custom_user.auth_token.exceptions import AuthenticationFailed
+from custom_auth_user.auth_token.exceptions import AuthenticationFailed
 
 # Services
-from django_custom_user.auth_token.authenticate_token \
+from custom_auth_user.auth_token.authenticate_token \
     import AuthenticateTokenService
 
 

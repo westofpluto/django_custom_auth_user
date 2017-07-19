@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'serpy',
-    'django_custom_user',
+    'custom_auth_user',
     'registration',
     'authentication',
 ]

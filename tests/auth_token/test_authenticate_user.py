@@ -3,13 +3,13 @@
 import pytest
 
 # Model
-from django_custom_user.models import User
+from custom_auth_user.models import User
 
 # Exception
-from django_custom_user.auth_token.exceptions import AuthenticationFailed
+from custom_auth_user.auth_token.exceptions import AuthenticationFailed
 
 # Auth token service
-from django_custom_user.auth_token.authenticate_user \
+from custom_auth_user.auth_token.authenticate_user \
     import AuthenticateUserService
 
 

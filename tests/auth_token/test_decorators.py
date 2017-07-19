@@ -9,11 +9,11 @@ from django.http import Http404
 from django.http.request import HttpRequest
 
 # Models
-from django_custom_user.models import User
-from django_custom_user.models import AuthToken
+from custom_auth_user.models import User
+from custom_auth_user.models import AuthToken
 
 # Decorator
-from django_custom_user.auth_token.decorators import token_required
+from custom_auth_user.auth_token.decorators import token_required
 
 
 @token_required

@@ -5,7 +5,7 @@ from django.utils import timezone
 from mixer.backend.django import mixer
 
 # Model
-from django_custom_user.models import AuthToken
+from custom_auth_user.models import AuthToken
 
 
 @pytest.mark.django_db

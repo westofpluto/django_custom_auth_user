@@ -10,7 +10,7 @@ import pytest
 
 PYTEST_ARGS = ['--tb=short', '-q', '-s', '-rw']
 
-FLAKE8_ARGS = ['django_custom_user', 'tests']
+FLAKE8_ARGS = ['custom_auth_user', 'tests']
 
 sys.path.append(os.path.dirname(__file__))
 
@@ -57,7 +57,7 @@ if __name__ == '__main__':
         else:
             PYTEST_ARGS += [
                 '--cov-report', 'html',
-                '--cov', 'django_custom_user']
+                '--cov', 'custom_auth_user']
 
     # Run flake8 lint
     if run_lint:

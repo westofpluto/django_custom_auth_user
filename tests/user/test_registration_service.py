@@ -3,13 +3,13 @@
 import pytest
 
 # Exception
-from django_custom_user.user.exceptions import InvalidInput
+from custom_auth_user.user.exceptions import InvalidInput
 
 # Service
-from django_custom_user.user.registration import RegistrationService
+from custom_auth_user.user.registration import RegistrationService
 
 # Model
-from django_custom_user.models import User
+from custom_auth_user.models import User
 
 
 @pytest.mark.django_db

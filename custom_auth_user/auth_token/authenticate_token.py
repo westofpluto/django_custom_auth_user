@@ -1,12 +1,12 @@
 # -*- coding: utf-8
 # Exception
-from django_custom_user.auth_token.exceptions import AuthenticationFailed
+from custom_auth_user.auth_token.exceptions import AuthenticationFailed
 
 # Stores
-from django_custom_user.auth_token.store import AuthTokenStore
+from custom_auth_user.auth_token.store import AuthTokenStore
 
 # Commands
-from django_custom_user.auth_token.commands.authenticate_token_command \
+from custom_auth_user.auth_token.commands.authenticate_token_command \
     import authenticate_token
 
 

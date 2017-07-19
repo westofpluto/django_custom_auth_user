@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 # Django custom user
-from django_custom_user.models import AbstractUser
+from custom_auth_user.models import AbstractUser
 
 
 class User(AbstractUser):

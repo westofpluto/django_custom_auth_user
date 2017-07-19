@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
-from django_custom_user.user.manager import UserManager
+from custom_auth_user.user.manager import UserManager
 
 
 class AbstractUser(AbstractBaseUser, PermissionsMixin):

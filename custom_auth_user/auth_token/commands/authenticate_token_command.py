@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 # Models
-from django_custom_user.models import AuthToken
+from custom_auth_user.models import AuthToken
 
 
 def authenticate_token(auth_token_store, auth_token):

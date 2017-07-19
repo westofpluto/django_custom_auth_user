@@ -6,10 +6,10 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 # Custom User
-from django_custom_user.user.registration import RegistrationService
+from custom_auth_user.user.registration import RegistrationService
 
 # Exception
-from django_custom_user.user.exceptions import InvalidInput
+from custom_auth_user.user.exceptions import InvalidInput
 
 # Serializer
 from .serializer import UserSerializer

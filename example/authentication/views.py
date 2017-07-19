@@ -6,16 +6,16 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
 # Token auth
-from django_custom_user.auth_token.authenticate_user \
+from custom_auth_user.auth_token.authenticate_user \
     import AuthenticateUserService
-from django_custom_user.auth_token.authenticate_token \
+from custom_auth_user.auth_token.authenticate_token \
     import AuthenticateTokenService
 
 # Token auth decorator
-from django_custom_user.auth_token.decorators import token_required
+from custom_auth_user.auth_token.decorators import token_required
 
 # Exception
-from django_custom_user.auth_token.exceptions \
+from custom_auth_user.auth_token.exceptions \
     import AuthenticationFailed
 
 # Serializers

@@ -3,7 +3,7 @@
 from django.utils.crypto import get_random_string
 
 # Models
-from django_custom_user.models import AuthToken
+from custom_auth_user.models import AuthToken
 
 
 class AuthTokenStore():

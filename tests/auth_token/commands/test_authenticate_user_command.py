@@ -3,13 +3,13 @@
 import pytest
 
 # Models
-from django_custom_user.models import User
+from custom_auth_user.models import User
 
 # Store
-from django_custom_user.user.store import UserStore
+from custom_auth_user.user.store import UserStore
 
 # Commands
-from django_custom_user.auth_token.commands.authenticate_user_command \
+from custom_auth_user.auth_token.commands.authenticate_user_command \
     import authenticate_user
 
 

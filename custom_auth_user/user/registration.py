@@ -1,15 +1,15 @@
 # -*- coding: utf-8
 # Exception
-from django_custom_user.user.exceptions import InvalidInput
+from custom_auth_user.user.exceptions import InvalidInput
 
 # Store
-from django_custom_user.user.store import UserStore
+from custom_auth_user.user.store import UserStore
 
 # Forms
-from django_custom_user.user.forms.registration_form import RegistrationForm
+from custom_auth_user.user.forms.registration_form import RegistrationForm
 
 # Commands
-from django_custom_user.user.commands.register_command import register
+from custom_auth_user.user.commands.register_command import register
 
 
 class RegistrationService():

@@ -8,10 +8,10 @@ from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.options import ModelAdmin
 
 # Models
-from django_custom_user.models import User
+from custom_auth_user.models import User
 
 # Admins
-from django_custom_user.admin import *
+from custom_auth_user.admin import *
 
 
 class MockRequest:
@@ -29,7 +29,7 @@ class TestUserAdmin():
         return ModelAdmin(User, AdminSite())
 
     def test_user_admin(self, user_model_admin):
-        assert str(user_model_admin) == 'django_custom_user.ModelAdmin'
+        assert str(user_model_admin) == 'custom_auth_user.ModelAdmin'
 
     def test_user_admin_fields(self, user_model_admin):
         admin_fields = set(list(user_model_admin.get_fields(request)))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8
 # Core
-from django_custom_user.auth_token.store import AuthTokenStore
+from custom_auth_user.auth_token.store import AuthTokenStore
 
 
 def delete_expired_token(auth_token_store=AuthTokenStore()):

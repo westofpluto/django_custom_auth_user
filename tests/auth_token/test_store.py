@@ -4,11 +4,11 @@ import pytest
 from mixer.backend.django import mixer
 
 # Models
-from django_custom_user.models import User
-from django_custom_user.models import AuthToken
+from custom_auth_user.models import User
+from custom_auth_user.models import AuthToken
 
 # Store
-from django_custom_user.auth_token.store import AuthTokenStore
+from custom_auth_user.auth_token.store import AuthTokenStore
 
 
 @pytest.mark.django_db
