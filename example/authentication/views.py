@@ -10,13 +10,14 @@ from custom_auth_user.auth_token.authenticate_user \
     import AuthenticateUserService
 from custom_auth_user.auth_token.authenticate_token \
     import AuthenticateTokenService
+from custom_auth_user.auth_token.delete_token import DeleteTokenService
 
 # Token auth decorator
 from custom_auth_user.auth_token.decorators import token_required
 
 # Exception
 from custom_auth_user.auth_token.exceptions \
-    import AuthenticationFailed
+    import AuthenticationFailed, TokenNotFound
 
 # Serializers
 from authentication.serializer import AuthTokenSerializer
@@ -85,3 +86,26 @@ class AuthTokenServiceView(View):
         serialized_user = UserSerializer(user).data
 
         return JsonResponse({'token': serialized_user}, status=200)
+
+
+class LogoutView(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(LogoutView, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request):
+        delete_token_service = DeleteTokenService(
+            token=request.POST.get('token', ''))
+
+        try:
+            delete_token_service.run()
+        except TokenNotFound:
+            errors = {
+                'error': {
+                    'message': 'Token not found'
+                }
+            }
+            return JsonResponse(errors, safe=False, status=401)
+
+        return JsonResponse({'token': 'Token deleted'}, status=200)
