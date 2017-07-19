@@ -1,8 +1,7 @@
 # -*- coding: utf-8
 # flake8: noqa
-import json
 from django.core import serializers
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -31,13 +30,11 @@ class RegisterView(View):
         try:
             user = registration_service.run()
         except InvalidInput:
-            return HttpResponse(
-                json.dumps({
-                    'error': registration_service.get_registration_form_errors()}),
-                content_type='application/json')
+            errors = registration_service.get_registration_form_errors()
+            return JsonResponse(errors, safe=False, status=422)
 
-        serialized_user = serializers.serialize('json', [user])
+        serialized_user = serializers.serialize(
+            'json', [user], ensure_ascii=False)
 
-        return HttpResponse(
-            json.dumps({'user': serialized_user}),
-            content_type='application/json')
+        return JsonResponse(
+            {'user': serialized_user}, status=200)
