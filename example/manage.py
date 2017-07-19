@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# pylint: disable=W0611
+# flake8: noqa
 import os
 import sys
 

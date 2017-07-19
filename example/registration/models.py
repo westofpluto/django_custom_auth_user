@@ -1,3 +1,10 @@
-from django.db import models
+# -*- coding: utf-8
+# Django custom user
+from django_custom_user.models import AbstractUser
 
-# Create your models here.
+
+class User(AbstractUser):
+    """
+    User model extends AbstractUser
+    """
+    pass

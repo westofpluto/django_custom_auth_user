@@ -1,3 +1,6 @@
+# -*- coding: utf-8
+# pylint: disable
+# flake8: noqa
 """
 Django settings for example project.
 
@@ -37,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'serpy',
     'django_custom_user',
     'registration',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -122,4 +127,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Set user default to custom
-AUTH_USER_MODEL = 'django_custom_user.User'
+AUTH_USER_MODEL = 'registration.User'

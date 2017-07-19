@@ -6,9 +6,9 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django_custom_user.user.manager import UserManager
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class AbstractUser(AbstractBaseUser, PermissionsMixin):
     """
-    User model
+    Abstract user model
     """
 
     email = models.EmailField(max_length=255, unique=True)
@@ -29,6 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'user'
         verbose_name_plural = 'users'
+        abstract = True
 
     def get_full_name(self):
         full_name = '%s %s' % (self.first_name, self.last_name)
@@ -36,3 +37,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.first_name
+
+
+class User(AbstractUser):
+    """
+    User model extends AbstractUser
+    """
+
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'

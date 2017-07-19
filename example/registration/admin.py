@@ -1,3 +1,10 @@
+# -*- coding: utf-8
+# Core
 from django.contrib import admin
 
-# Register your models here.
+# Models
+from registration.models import User
+
+
+# Register admins
+admin.site.register(User)

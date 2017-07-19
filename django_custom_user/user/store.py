@@ -1,11 +1,15 @@
 # -*- coding: utf-8
 # Models
-from django_custom_user.models import User
+from django.contrib.auth import get_user_model
 
 
 class UserStore():
+    """
+    User store
+    """
 
-    model = User
+    model = get_user_model()
+    query_set = get_user_model().objects
 
     def save(self, user):
         user.save()
@@ -27,9 +31,3 @@ class UserStore():
             user.save()
 
         return user
-
-    def find_by_email(self, email):
-        return self.model.objects.find_by_email(email)
-
-    def find_by_username(self, username):
-        return self.model.objects.find_by_username(username)
