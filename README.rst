@@ -87,7 +87,7 @@ Then change the ``AUTH_USER_MODEL`` in settings to use new custom user.
 User registration service
 -------------------------
 
-Use ``custom_auth_user.user.registration.RegistrationService`` to register new user.
+Use ``RegistrationService`` to register new user.
 
 .. code-block:: python
 

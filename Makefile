@@ -27,9 +27,13 @@ coverage: ## check code coverage quickly with the default Python
 	python3 runtests.py --nolint --coverage
 
 release: clean ## package and upload a release
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	echo 'Important notes'
+	echo 'Update the Changelog version and date in README.rst'
+	echo 'Bump version'
+	echo 'Update git version/tag'
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
 
 sdist: clean ## package
-	python setup.py sdist
+	python setup.py sdist bdist_wheel
 	ls -l dist
