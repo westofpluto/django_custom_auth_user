@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sites",
-    "django_custom_user",
+    "custom_auth_user",
 ]
 
 SITE_ID = 1
@@ -35,4 +35,4 @@ else:
     MIDDLEWARE_CLASSES = ()
 
 # Set user default to custom
-AUTH_USER_MODEL = 'django_custom_user.User'
+AUTH_USER_MODEL = 'custom_auth_user.User'

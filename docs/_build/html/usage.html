@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; custom_auth_user 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="custom_auth_user 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Query Sets" href="query_set.html"/>
+        <link rel="prev" title="Installation" href="installation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> custom_auth_user
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#custom-user">Custom user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-registration">User registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auth-token-generate">Auth token generate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#token-authentication">Token authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auth-token-deletion">Auth token deletion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="query_set.html">Query Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Credits</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">custom_auth_user</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="custom-user">
+<h2>Custom user<a class="headerlink" href="#custom-user" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal"><span class="pre">get_user_model()</span></code> to get user. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth</span> <span class="k">import</span> <span class="n">get_user_model</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">get_user_model</span><span class="p">()</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;user@cloud.com&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal"><span class="pre">AUTH_USER_MODEL</span></code> for model relations. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf</span> <span class="k">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or you can use <code class="docutils literal"><span class="pre">custom_auth_user.models.AbstractUser</span></code> to extend custom user. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">custom_auth_user.models</span> <span class="k">import</span> <span class="n">AbstractUser</span>
+
+<span class="k">class</span> <span class="nc">CustomUser</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    User model extends AbstractUser</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Then change the <code class="docutils literal"><span class="pre">AUTH_USER_MODEL</span></code> in settings to use new custom user:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AUTH_USER_MODEL</span> <span class="o">=</span> <span class="s1">&#39;app.CustomUser&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-registration">
+<h2>User registration<a class="headerlink" href="#user-registration" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal"><span class="pre">RegistrationService</span></code> to register new user:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">custom_auth_user.user.registration</span> <span class="k">import</span> <span class="n">RegistrationService</span>
+<span class="kn">from</span> <span class="nn">custom_auth_user.user.exceptions</span> <span class="k">import</span> <span class="n">InvalidInput</span>
+
+<span class="c1"># Initialize registration service</span>
+<span class="n">registration_service</span> <span class="o">=</span> <span class="n">RegistrationService</span><span class="p">(</span>
+    <span class="n">email</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="n">username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="n">first_name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;first_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="n">last_name</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;last_name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+<span class="c1"># Catch errors here</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">registration_service</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">InvalidInput</span><span class="p">:</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="n">registration_service</span><span class="o">.</span><span class="n">get_registration_form_errors</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auth-token-generate">
+<h2>Auth token generate<a class="headerlink" href="#auth-token-generate" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal"><span class="pre">AuthenticateUserService</span></code> to generate new auth token:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.authenticate_user</span> <span class="k">import</span> <span class="n">AuthenticateUserService</span>
+<span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.exceptions</span> <span class="k">import</span> <span class="n">AuthenticationFailed</span>
+
+<span class="n">authentication_service</span> <span class="o">=</span> <span class="n">AuthenticateUserService</span><span class="p">(</span>
+    <span class="n">email_or_username</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;email_or_username&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">authentication_service</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">AuthenticationFailed</span><span class="p">:</span>
+    <span class="c1"># Authentication failed</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="token-authentication">
+<h2>Token authentication<a class="headerlink" href="#token-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal"><span class="pre">token_required</span></code> decorator to authenticate header token. Get authenticated user at <code class="docutils literal"><span class="pre">request.user</span></code>.</p>
+<p>Authorization header must have token at the begining. Example <code class="docutils literal"><span class="pre">token</span> <span class="pre">5KxXkJYwWBsN9Zne87ncoQYYuggDBdYY</span></code>.</p>
+<p>Return json response if authentication failed:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.decorators</span> <span class="k">import</span> <span class="n">token_required</span>
+
+<span class="nd">@token_required</span>
+<span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># get authenticated user at request.user</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Or you can use <code class="docutils literal"><span class="pre">AuthenticateTokenService</span></code> to authenticate token:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.authenticate_token</span> <span class="k">import</span> <span class="n">AuthenticateTokenService</span>
+<span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.exceptions</span> <span class="k">import</span> <span class="n">AuthenticationFailed</span>
+
+<span class="n">authentication_service</span> <span class="o">=</span> <span class="n">AuthenticateTokenService</span><span class="p">(</span>
+    <span class="n">auth_token</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">authentication_service</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">AuthenticationFailed</span><span class="p">:</span>
+    <span class="c1"># Authentication failed</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auth-token-deletion">
+<h2>Auth token deletion<a class="headerlink" href="#auth-token-deletion" title="Permalink to this headline">¶</a></h2>
+<p>Use <code class="docutils literal"><span class="pre">DeleteTokenService</span></code> to delete token. You can use this when user logs out:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.delete_token</span> <span class="k">import</span> <span class="n">DeleteTokenService</span>
+<span class="kn">from</span> <span class="nn">custom_auth_user.auth_token.exceptions</span> <span class="k">import</span> <span class="n">TokenNotFound</span>
+
+<span class="n">delete_token_service</span> <span class="o">=</span> <span class="n">DeleteTokenService</span><span class="p">(</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">delete_token_service</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">TokenNotFound</span><span class="p">:</span>
+    <span class="c1"># Token not found</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="query_set.html" class="btn btn-neutral float-right" title="Query Sets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, RelEng Team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

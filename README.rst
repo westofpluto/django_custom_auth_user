@@ -1,76 +1,55 @@
-=============================
-Django Custom User
-=============================
+Django Custom Auth User
+=======================
 
-.. image:: https://badge.fury.io/py/django_custom_user.svg
-    :target: https://badge.fury.io/py/django_custom_user
+.. image:: https://travis-ci.org/anthon-alindada/django_custom_auth_user.svg?branch=master
+    :target: https://travis-ci.org/anthon-alindada/django_custom_auth_user
 
-.. image:: https://travis-ci.org/anthon-alindada/django_custom_user.svg?branch=master
-    :target: https://travis-ci.org/anthon-alindada/django_custom_user
+.. image:: https://codecov.io/gh/anthon-alindada/django_custom_auth_user/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/anthon-alindada/django_custom_auth_user
 
-.. image:: https://codecov.io/gh/anthon-alindada/django_custom_user/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/anthon-alindada/django_custom_user
-
-Django custom user
+Django custom user model and abstract user model basic token authentication.
 
 Documentation
 -------------
 
-The full documentation is at https://django_custom_user.readthedocs.io.
+The full documentation is at https://django_custom_auth_user.readthedocs.io.
+
+Features
+--------
+* Custom user
+* Extendable abstract user
+* User registration service
+* Token authentication
+* Create auth token
+* Delete auth token
+* Query sets for ``User`` & ``AuthToken``
 
 Quickstart
 ----------
 
 Install Django custom user::
 
-    pip install django_custom_user
+    pip install django_custom_auth_user
 
-Add it to your `INSTALLED_APPS`:
 
-.. code-block:: python
+Add it to your ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         ...
-        'django_custom_user.apps.DjangoCustomUserConfig',
+        'custom_auth_user',
         ...
     )
 
-Add Django Custom User's URL patterns:
+Set your ``AUTH_USER_MODEL`` setting to use ``custom_auth_user.User``::
 
-.. code-block:: python
+    AUTH_USER_MODEL = 'custom_auth_user.User'
 
-    from django_custom_user import urls as django_custom_user_urls
+Create the database tables::
+
+    python manage.py migrate
 
 
-    urlpatterns = [
-        ...
-        url(r'^', include(django_custom_user_urls)),
-        ...
-    ]
+Version 0.1 (2017-07-23)
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Features
---------
-
-* TODO
-
-Running Tests
--------------
-
-Does the code actually work?
-
-::
-
-    source <YOURVIRTUALENV>/bin/activate
-    (myenv) $ pip install tox
-    (myenv) $ tox
-
-Credits
--------
-
-Tools used in rendering this package:
-
-*  Cookiecutter_
-*  `cookiecutter-djangopackage`_
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage
+- Initial release.
