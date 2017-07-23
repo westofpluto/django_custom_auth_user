@@ -7,7 +7,7 @@ except ImportError:
 
 
 def get_version():
-    return '0.1.1'
+    return '0.1.2'
 
 
 version = get_version()
