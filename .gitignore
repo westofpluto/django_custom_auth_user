@@ -18,6 +18,7 @@ cache
 
 /virtualenv/
 /env/
+/example/env/
 .venv
 
 
