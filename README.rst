@@ -1,6 +1,19 @@
+Django Custom Auth User - Improved Fork
+=======================================
+
+This is a fork of https://github.com/anthon-alindada/django_custom_auth_user which fixes several bugs.
+Unfortunately the original repo (the one I forked from) is no longer maintained by the developer,
+even though it has a couple of critical bugs that render that repo unusable. In particular:
+
+* In the original repo, the token expires 24 hours after the Django system gets restarted. Any tokens created after that will already be expired!
+* In the original repo, the token_required decorator did not work on class-based view methods
+
+Both of these issues have been fixed in this fork.
+
+Here is the original README:
+
 Django Custom Auth User
 =======================
-
 .. image:: https://travis-ci.org/anthon-alindada/django_custom_auth_user.svg?branch=master
     :target: https://travis-ci.org/anthon-alindada/django_custom_auth_user
 
